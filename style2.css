@@ -169,10 +169,47 @@ input[type="checkbox"]:checked~.nav-links {
   border-radius: 50%;
   border: 5px solid #00bcd4;
   box-shadow: 0px 0px 70px 10px #00bbd480;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
 }
-.welcome-image img:hover{
+
+.welcome-image img:hover {
   transform: scale(1.1);
   transition: all 1s ease;
+  transform: scale(1.1);
+  box-shadow: 0 8px 50px rgba(0, 188, 212, 0.8);
+}
+
+/* Social Icons in Welcome Section */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #00bcd4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.social-icons a:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.8);
+}
+
+.social-icons img {
+  width: 25px;
+  height: 25px;
+  filter: brightness(0) invert(1);
 }
 
 /* About Section */
@@ -220,6 +257,52 @@ input[type="checkbox"]:checked~.nav-links {
   border: 5px solid #00bcd4;
 }
 
+/* About Section Flip Effect */
+.about-paragraph {
+  position: relative;
+  perspective: 1000px;
+}
+
+.about-image {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+.about-image:hover {
+  transform: rotateY(180deg);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border: 5px solid #00bcd4;
+}
+
+.about-image .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00bcd4;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  transform: rotateY(180deg);
+}
+
 .about-paragraph span {
   flex: 1;
 }
@@ -252,7 +335,6 @@ input[type="checkbox"]:checked~.nav-links {
   font-family: "Poppins", sans-serif;
 
 }
-
 
 .project-cards {
   display: grid;
@@ -299,50 +381,96 @@ input[type="checkbox"]:checked~.nav-links {
   font-family: "Baloo Bhai 2", sans-serif;
 }
 
-/* Footer */
+/* Footer Section */
 footer {
   padding: 2rem;
   background: #101010;
   color: #fff;
   text-align: center;
   font-family: "Poppins", sans-serif;
-
 }
 
-footer p {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-footer form {
+.footer-content {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
   margin: auto;
 }
 
-footer input,
-footer textarea,
-footer button {
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.contact-form h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  width: 100%;
   padding: 0.5rem;
+  margin: 0.5rem 0;
   font-size: 1rem;
 }
 
-footer button {
+.contact-form button {
   background: #00bcd4;
   color: #fff;
   border: none;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
+  transition: background 0.3s ease;
 }
 
-footer button:hover {
+.contact-form button:hover {
   background: #0398ac;
 }
 
-.reveal {
-  opacity: 0;
-  animation: reveal 1s ease-out forwards;
+.contact-image {
+  flex: 0.5;
+  min-width: 300px;
+}
+
+.contact-image img {
+  border-radius: 10px;
+}
+
+/* Social Media Icons */
+.social-icons {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #00bcd4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+  background: #0398ac;
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
 @keyframes reveal {
@@ -392,6 +520,7 @@ footer button:hover {
 }
 
 @media (max-width: 768px) {
+
   .nav-links {
     display: none;
     gap: 1px;
@@ -417,6 +546,21 @@ footer button:hover {
 
   .welcome-text {
     text-align: center;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icons img {
+    width: 20px;
+    height: 20px;
   }
 
   .welcome-image img {
@@ -446,5 +590,14 @@ footer button:hover {
   .project-info p {
     font-size: 0.9rem;
     font-size: 1.3rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-image img {
+    width: 100%;
   }
 }
